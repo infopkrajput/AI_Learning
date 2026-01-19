@@ -1,0 +1,13 @@
+from dotenv import load_dotenv
+from openai import OpenAI
+
+load_dotenv()
+
+client = OpenAI()
+text = "Eiffel tower is located in Paris. It is one of the most famous landmarks in the world. It is 324 meters tall."
+
+response = client.embeddings.create(
+    input=text,
+    model="text-embedding-3-small"
+)
+print("Embedding : ", response.data[0].embedding)
